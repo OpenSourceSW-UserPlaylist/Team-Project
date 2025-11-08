@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'category_result_page.dart';
 
 class SongInputPage extends StatefulWidget {
   final String userName;
@@ -36,6 +37,15 @@ class _SongInputPageState extends State<SongInputPage> {
       ).showSnackBar(const SnackBar(content: Text('먼저 노래를 한 곡 이상 입력해주세요!')));
       return;
     }
+
+    // 다음 페이지로 이동
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) =>
+            CategoryResultPage(songs: _songs, userName: widget.userName),
+      ),
+    );
 
     // 이후 Django API 연동으로 대체 예정
     ScaffoldMessenger.of(
